@@ -1,0 +1,37 @@
+.disclosure {
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  transition: all 200ms ease-in-out;
+
+  .disclosure__header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    inline-size: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px;
+    transition: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &:focus-visible {
+      border-radius: 8px;
+      outline: 2px solid blue;
+      outline-offset: -4px;
+    }
+  }
+
+  .disclosure__body {
+    transition: inherit;
+  }
+
+  .disclosure__body-content {
+    padding: 16px;
+  }
+}
