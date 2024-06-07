@@ -16,12 +16,23 @@ const preview: Preview = {
         items: ["light", "dark"],
       },
     },
+    density: {
+      description: "Display density.",
+      defaultValue: "default",
+      toolbar: {
+        title: "Dense",
+        icon: "circlehollow",
+        items: ["default", "dense"],
+      },
+    },
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme;
+      const dense = context.globals.density === "dense";
+
       return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} dense={dense}>
           <div
             style={{
               background: "rgb(var(--bg-primary))",

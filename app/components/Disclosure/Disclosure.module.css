@@ -18,6 +18,7 @@
   .disclosure__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--font-family);
     font-weight: bold;
     font-size: var(--disclosure-header-font-size);

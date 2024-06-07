@@ -14,7 +14,7 @@
 
   --font-size-base: 1rem;
   --font-size-three-quarter-x: calc(var(--font-size-base) * 0.75);
-  --font-size-1x: var(--font-size-base);
+  --font-size-1-x: var(--font-size-base);
   --font-size-1-and-eighth-x: calc(var(--font-size-base) * 1.125);
   --font-size-1-and-half-x: calc(var(--font-size-base) * 1.5);
   --font-size-2-x: calc(var(--font-size-base) * 2);
@@ -44,4 +44,9 @@
   --fg-primary: 255, 255, 255;
   --fg-primary-inverse: 0, 0, 0;
   --border-primary: 61, 61, 61;
+}
+
+.dense {
+  --space-base: 4px;
+  --font-size-base: 0.85rem;
 }
