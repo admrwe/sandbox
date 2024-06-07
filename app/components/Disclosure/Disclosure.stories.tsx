@@ -1,14 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Disclosure } from "./Disclosure";
+import { Button } from "../Button";
 
 const meta: Meta<typeof Disclosure> = {
   component: Disclosure,
   args: {
     title: "Title",
-    children: "Foo bar baz.",
-    expanded: undefined,
-    defaultExpanded: true,
+    children: (
+      <>
+        Foo bar baz. <br />
+        <Button>Hello world</Button>
+      </>
+    ),
+    expanded: false,
+    style: { minInlineSize: "300px" },
   },
 };
 

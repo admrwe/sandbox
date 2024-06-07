@@ -1,0 +1,47 @@
+.light {
+  /* Global */
+  --animation-default: all 200ms ease-in-out;
+
+  --space-base: 8px;
+  --space-half-x: calc(var(--space-base) * 0.5);
+  --space-1-x: var(--space-base);
+  --space-1-and-half-x: calc(var(--space-base) * 1.5);
+  --space-2-x: calc(var(--space-base) * 2);
+  --space-3-x: calc(var(--space-base) * 3);
+  --space-5-x: calc(var(--space-base) * 5);
+
+  --font-family: system-ui, sans-serif;
+
+  --font-size-base: 1rem;
+  --font-size-three-quarter-x: calc(var(--font-size-base) * 0.75);
+  --font-size-1x: var(--font-size-base);
+  --font-size-1-and-eighth-x: calc(var(--font-size-base) * 1.125);
+  --font-size-1-and-half-x: calc(var(--font-size-base) * 1.5);
+  --font-size-2-x: calc(var(--font-size-base) * 2);
+  --font-size-3-x: calc(var(--font-size-base) * 3);
+  --font-size-5-x: calc(var(--font-size-base) * 5);
+
+  --border-radius-base: 8px;
+  --border-radius-half-x: calc(var(--border-radius-base) / 2);
+  --border-radius-1-x: var(--border-radius-base);
+  --border-radius-2-x: calc(var(--border-radius-base) * 2);
+
+  --focus-ring: 2px solid blue;
+  --focus-offset-outside: 2px;
+  --focus-offset-inside: -4px;
+
+  /* Theme specific */
+  --bg-primary: 255, 255, 255;
+  --bg-primary-inverse: 0, 0, 0;
+  --fg-primary: 0, 0, 0;
+  --fg-primary-inverse: 255, 255, 255;
+  --border-primary: 204, 204, 204;
+}
+
+.dark {
+  --bg-primary: 0, 0, 0;
+  --bg-primary-inverse: 255, 255, 255;
+  --fg-primary: 255, 255, 255;
+  --fg-primary-inverse: 0, 0, 0;
+  --border-primary: 61, 61, 61;
+}

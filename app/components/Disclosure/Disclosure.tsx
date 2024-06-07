@@ -118,7 +118,7 @@ export const Disclosure = (props: DisclosureProps) => {
             transition: "inherit",
             transform: isOpen ? "rotate(180deg)" : undefined,
           }}>
-          ▾
+          👇
         </div>
       </button>
       <div

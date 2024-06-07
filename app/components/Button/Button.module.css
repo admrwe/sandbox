@@ -1,4 +1,36 @@
 .button {
-  font-size: 1rem;
-  background-color: blue;
+  /* Tokens */
+  --button-bg-color: rgb(var(--bg-primary-inverse));
+  --button-bg-color--hover: rgba(var(--bg-primary-inverse), 0.75);
+  --button-text-color: rgb(var(--fg-primary-inverse));
+  --button-border-radius: var(--border-radius-1-x);
+  --button-padding-block: var(--space-1-x);
+  --button-padding-inline: var(--space-1-and-half-x);
+  --button-font-size: var(--font-size-1-x);
+  --button-animation: var(--animation-default);
+
+  box-sizing: border-box;
+  font-size: var(--button-font-size);
+  font-family: var(--font-family);
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding-block: var(--button-padding-block);
+  padding-inline: var(--button-padding-inline);
+  transition: var(--button-animation);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--button-bg-color--hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset-outside);
+  }
 }
