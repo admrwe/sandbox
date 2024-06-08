@@ -15,13 +15,10 @@ alters the holistic visual presentation of all components.
   --border-radius-2-x: calc(var(--border-radius-base) * 2);
 
   /* Color */
-  /* Note: This is a fallback duplicate of the default light theme */
   --color-white: #ffffff;
   --color-black: #000000;
   --color-green-dark: #1a701a;
   --color-green-light: #279127;
-  --color-mode-background: var(--color-white);
-  --color-mode-foreground: var(--color-black);
 
   /* Focus */
   --focus-ring: 2px solid var(--color-green);
@@ -56,8 +53,9 @@ Semantic tokens map global tokens to common use cases, like
 background and text colors, or action colors/states.
 */
 .semantic {
-  /* Brand colors */
   --color-brand: var(--color-green-dark);
+  --color-mode-background: var(--color-white);
+  --color-mode-foreground: var(--color-black);
 
   /* Common colors */
   --background: var(--color-mode-background);
