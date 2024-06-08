@@ -4,7 +4,7 @@ import style from "./ThemeProvider.module.css";
 
 interface ThemeProviderProps {
   children: ReactNode;
-  theme?: "light" | "dark";
+  theme?: "light" | "light-sepia" | "dark";
   dense?: boolean;
 }
 

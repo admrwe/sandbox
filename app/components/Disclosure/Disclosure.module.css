@@ -1,5 +1,5 @@
 .disclosure {
-  --disclosure-border-color: var(--border-primary);
+  --disclosure-border-color: var(--border);
   --disclosure-body-color: var(--color-mode-foreground);
   --disclosure-header-color: var(--color-mode-foreground);
   --disclosure-header-background-color: transparent;

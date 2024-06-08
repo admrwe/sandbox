@@ -16,9 +16,12 @@ alters the holistic visual presentation of all components.
 
   /* Color */
   /* Note: This is a fallback duplicate of the default light theme */
-  --color-mode-background: #ffffff;
-  --color-mode-foreground: #000000;
-  --color-green: #1a701a;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-green-dark: #1a701a;
+  --color-green-light: #279127;
+  --color-mode-background: var(--color-white);
+  --color-mode-foreground: var(--color-black);
 
   /* Focus */
   --focus-ring: 2px solid var(--color-green);
@@ -53,23 +56,26 @@ Semantic tokens map global tokens to common use cases, like
 background and text colors, or action colors/states.
 */
 .semantic {
+  /* Brand colors */
+  --color-brand: var(--color-green-dark);
+
   /* Common colors */
   --background: var(--color-mode-background);
   --background-inverse: var(--color-mode-foreground);
   --foreground: var(--color-mode-foreground);
   --foreground-inverse: var(--color-mode-background);
-  --border-primary: color-mix(
+  --border: color-mix(
     in srgb,
     var(--color-mode-foreground) 30%,
     var(--color-mode-background)
   );
 
   /* Action */
-  --background-action: var(--color-green);
+  --background-action: var(--color-brand);
   --background-action--hover: color-mix(
     in srgb,
     var(--color-mode-foreground) 30%,
-    var(--color-green)
+    var(--color-brand)
   );
 }
 
@@ -80,15 +86,20 @@ Themes modify global token values to create a specific visual
 presentation, like light and dark mode.
 */
 .light {
-  --color-mode-background: #ffffff;
-  --color-mode-foreground: #000000;
-  --color-green: #1a701a;
+  --color-mode-background: var(--color-white);
+  --color-mode-foreground: var(--color-black);
+  --color-brand: var(--color-green-dark);
+}
+
+.light-sepia {
+  --color-mode-background: #fff6dd;
+  --color-mode-foreground: #1b1504;
 }
 
 .dark {
-  --color-mode-background: #000000;
-  --color-mode-foreground: #ffffff;
-  --color-green: #279127;
+  --color-mode-background: var(--color-black);
+  --color-mode-foreground: var(--color-white);
+  --color-brand: var(--color-green-light);
 }
 
 /* 
@@ -99,6 +110,6 @@ alternate visual presentations, like a dense mode.
 */
 .dense {
   --border-radius-base: 4px;
-  --space-base: 6px;
+  --space-base: 4px;
   --font-size-base: 0.9rem;
 }

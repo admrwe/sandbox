@@ -13,7 +13,7 @@ const preview: Preview = {
       toolbar: {
         title: "Theme",
         icon: "circlehollow",
-        items: ["light", "dark"],
+        items: ["light", "light-sepia", "dark"],
       },
     },
     density: {
