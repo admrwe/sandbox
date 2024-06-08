@@ -1,0 +1,12 @@
+.sb-preview {
+    box-sizing: "border-box";
+    background: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    transition: var(--animation-default);
+    padding: var(--space-3-x);
+}
