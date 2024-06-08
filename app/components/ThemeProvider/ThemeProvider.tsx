@@ -14,7 +14,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
   const { children, dense = false, theme = DEFAULT_THEME } = props;
   return (
     <div
-      className={`${style[DEFAULT_THEME]} ${theme !== DEFAULT_THEME ? style[theme] : ""} ${dense ? style.dense : ""}`}>
+      className={`${style.global} ${style.semantic} ${style[theme]} ${dense ? style.dense : ""}`}>
       {children}
     </div>
   );

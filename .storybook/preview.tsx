@@ -20,7 +20,7 @@ const preview: Preview = {
       description: "Display density.",
       defaultValue: "default",
       toolbar: {
-        title: "Dense",
+        title: "Density",
         icon: "circlehollow",
         items: ["default", "dense"],
       },
@@ -35,7 +35,7 @@ const preview: Preview = {
         <ThemeProvider theme={theme} dense={dense}>
           <div
             style={{
-              background: "rgb(var(--bg-primary))",
+              background: "var(--background)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",

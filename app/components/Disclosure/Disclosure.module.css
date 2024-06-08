@@ -1,11 +1,16 @@
 .disclosure {
-  --disclosure-border-color: rgb(var(--border-primary));
-  --disclosure-body-text-color: rgb(var(--fg-primary));
-  --disclosure-header-text-color: rgb(var(--fg-primary));
-  --disclosure-header-bg-color--hover: rgba(var(--bg-primary-inverse), 0.1);
+  --disclosure-border-color: var(--border-primary);
+  --disclosure-body-color: var(--color-mode-foreground);
+  --disclosure-header-color: var(--color-mode-foreground);
+  --disclosure-header-background-color: transparent;
+  --disclosure-header-background-color--hover: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 10%,
+    var(--color-mode-background)
+  );
   --disclosure-animation: var(--animation-default);
   --disclosure-header-font-size: var(--font-size-1-and-eighth-x);
-  --disclosure-body-font-size: var(--font-size-1x);
+  --disclosure-body-font-size: var(--font-size-1-x);
   --disclosure-padding: var(--space-2-x);
   --disclosure-border-radius: var(--border-radius-1-x);
 
@@ -23,15 +28,15 @@
     font-weight: bold;
     font-size: var(--disclosure-header-font-size);
     inline-size: 100%;
-    background: transparent;
+    background-color: var(--disclosure-header-background-color);
     border: none;
     padding: var(--disclosure-padding);
     transition: inherit;
     cursor: pointer;
-    color: var(--disclosure-header-text-color);
+    color: var(--disclosure-header-color);
 
     &:hover {
-      background-color: var(--disclosure-header-bg-color--hover);
+      background-color: var(--disclosure-header-background-color--hover);
     }
 
     &:focus-visible {
@@ -44,7 +49,7 @@
   .disclosure__body {
     transition: inherit;
     font-family: var(--font-family);
-    color: var(--disclosure-body-text-color);
+    color: var(--disclosure-body-color);
     font-size: var(--disclosure-body-font-size);
   }
 

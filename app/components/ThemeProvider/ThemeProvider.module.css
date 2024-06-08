@@ -1,7 +1,31 @@
-.light {
-  /* Global */
+/* 
+Global tokens
+-------------------------------------------------------------
+Global tokens define global standards. Adjusting these variables
+alters the holistic visual presentation of all components.
+*/
+.global {
+  /* Animation */
   --animation-default: all 200ms ease-in-out;
 
+  /* Border radius */
+  --border-radius-base: 8px;
+  --border-radius-half-x: calc(var(--border-radius-base) / 2);
+  --border-radius-1-x: var(--border-radius-base);
+  --border-radius-2-x: calc(var(--border-radius-base) * 2);
+
+  /* Color */
+  /* Note: This is a fallback duplicate of the default light theme */
+  --color-mode-background: #ffffff;
+  --color-mode-foreground: #000000;
+  --color-green: #1a701a;
+
+  /* Focus */
+  --focus-ring: 2px solid var(--color-green);
+  --focus-offset-outside: 2px;
+  --focus-offset-inside: -4px;
+
+  /* Space */
   --space-base: 8px;
   --space-half-x: calc(var(--space-base) * 0.5);
   --space-1-x: var(--space-base);
@@ -10,8 +34,8 @@
   --space-3-x: calc(var(--space-base) * 3);
   --space-5-x: calc(var(--space-base) * 5);
 
+  /* Typography */
   --font-family: system-ui, sans-serif;
-
   --font-size-base: 1rem;
   --font-size-three-quarter-x: calc(var(--font-size-base) * 0.75);
   --font-size-1-x: var(--font-size-base);
@@ -20,33 +44,61 @@
   --font-size-2-x: calc(var(--font-size-base) * 2);
   --font-size-3-x: calc(var(--font-size-base) * 3);
   --font-size-5-x: calc(var(--font-size-base) * 5);
+}
 
-  --border-radius-base: 8px;
-  --border-radius-half-x: calc(var(--border-radius-base) / 2);
-  --border-radius-1-x: var(--border-radius-base);
-  --border-radius-2-x: calc(var(--border-radius-base) * 2);
+/* 
+Semantic tokens
+-------------------------------------------------------------
+Semantic tokens map global tokens to common use cases, like
+background and text colors, or action colors/states.
+*/
+.semantic {
+  /* Common colors */
+  --background: var(--color-mode-background);
+  --background-inverse: var(--color-mode-foreground);
+  --foreground: var(--color-mode-foreground);
+  --foreground-inverse: var(--color-mode-background);
+  --border-primary: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 30%,
+    var(--color-mode-background)
+  );
 
-  --focus-ring: 2px solid blue;
-  --focus-offset-outside: 2px;
-  --focus-offset-inside: -4px;
+  /* Action */
+  --background-action: var(--color-green);
+  --background-action--hover: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 30%,
+    var(--color-green)
+  );
+}
 
-  /* Theme specific */
-  --bg-primary: 255, 255, 255;
-  --bg-primary-inverse: 0, 0, 0;
-  --fg-primary: 0, 0, 0;
-  --fg-primary-inverse: 255, 255, 255;
-  --border-primary: 204, 204, 204;
+/* 
+Themes
+-------------------------------------------------------------
+Themes modify global token values to create a specific visual
+presentation, like light and dark mode.
+*/
+.light {
+  --color-mode-background: #ffffff;
+  --color-mode-foreground: #000000;
+  --color-green: #1a701a;
 }
 
 .dark {
-  --bg-primary: 0, 0, 0;
-  --bg-primary-inverse: 255, 255, 255;
-  --fg-primary: 255, 255, 255;
-  --fg-primary-inverse: 0, 0, 0;
-  --border-primary: 61, 61, 61;
+  --color-mode-background: #000000;
+  --color-mode-foreground: #ffffff;
+  --color-green: #279127;
 }
 
+/* 
+Theme modifiers
+-------------------------------------------------------------
+Theme modifiers can be layered on to themes to achieve
+alternate visual presentations, like a dense mode.
+*/
 .dense {
-  --space-base: 4px;
-  --font-size-base: 0.85rem;
+  --border-radius-base: 4px;
+  --space-base: 6px;
+  --font-size-base: 0.9rem;
 }

@@ -1,8 +1,8 @@
 .button {
   /* Tokens */
-  --button-bg-color: rgb(var(--bg-primary-inverse));
-  --button-bg-color--hover: rgba(var(--bg-primary-inverse), 0.75);
-  --button-text-color: rgb(var(--fg-primary-inverse));
+  --button-background-color: var(--background-action);
+  --button-background-color--hover: var(--background-action--hover);
+  --button-color: var(--foreground-inverse);
   --button-border-radius: var(--border-radius-1-x);
   --button-padding-block: var(--space-1-x);
   --button-padding-inline: var(--space-1-and-half-x);
@@ -12,8 +12,8 @@
   box-sizing: border-box;
   font-size: var(--button-font-size);
   font-family: var(--font-family);
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  color: var(--button-color);
   border: none;
   border-radius: var(--button-border-radius);
   padding-block: var(--button-padding-block);
@@ -22,7 +22,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--button-bg-color--hover);
+    background-color: var(--button-background-color--hover);
   }
 
   &:active {
