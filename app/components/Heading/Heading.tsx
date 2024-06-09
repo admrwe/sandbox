@@ -1,39 +1,34 @@
-import { JSX, forwardRef, HTMLAttributes } from 'react'
+import { JSX, forwardRef, HTMLAttributes } from 'react';
 
-import style from './Heading.module.css'
+import style from './Heading.module.css';
 
-type HeadingSizes =
-  | 'three-quarter-x'
-  | '1-x'
-  | '1-and-eigth-x'
-  | '1-and-half-x'
-  | '2-x'
-  | '3-x'
-  | '5-x'
+import { FontSizes, CommonCSSProps, getCommonCssPropStyles } from '../utils';
 
-interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
+interface HeadingProps
+  extends CommonCSSProps,
+    HTMLAttributes<HTMLHeadingElement> {
   /**
    * Sets HTML heading level, i.e. h2.
    *
    * @default 2
    */
-  level?: 1 | 2 | 3 | 4 | 5 | 6
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Sets heading text.
    */
-  children: string
+  children: string;
   /**
    * Sets font size.
    *
-   * @default "2-x"
+   * @default '2-x'
    */
-  size?: HeadingSizes
+  size?: FontSizes;
   /**
    * Sets font weight.
    *
-   * @default "normal"
+   * @default 'normal'
    */
-  weight?: 'bold' | 'normal'
+  fontWeight?: 'bold' | 'normal';
 }
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
@@ -42,21 +37,24 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       children,
       level = 2,
       size = '2-x',
-      weight = 'normal',
+      fontWeight = 'normal',
       ...remainingProps
-    } = props
-    const HeadingTag: keyof JSX.IntrinsicElements = `h${level}`
-    const sizeStyle = style[`size-${size}`]
+    } = props;
+    const HeadingTag: keyof JSX.IntrinsicElements = `h${level}`;
+    const sizeClass = style[`size-${size}`];
 
     return (
       <HeadingTag
-        style={{ fontWeight: weight }}
-        className={`${style.heading} ${sizeStyle}`}
+        style={{
+          fontWeight: fontWeight,
+          ...getCommonCssPropStyles(remainingProps),
+        }}
+        className={`${style.heading} ${sizeClass}`}
         ref={ref}
         {...remainingProps}
       >
         {children}
       </HeadingTag>
-    )
+    );
   }
-)
+);

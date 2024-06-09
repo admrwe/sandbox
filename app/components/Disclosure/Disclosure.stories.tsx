@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
-import { Disclosure } from './Disclosure'
-import { Button } from '../Button'
+import { Disclosure } from './Disclosure';
+import { Button } from '../Button';
 
 const meta: Meta<typeof Disclosure> = {
   component: Disclosure,
@@ -19,9 +19,9 @@ const meta: Meta<typeof Disclosure> = {
     onOpenChange: fn(),
     onToggle: fn(),
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Disclosure>
+export default meta;
+type Story = StoryObj<typeof Disclosure>;
 
-export const Default: Story = {}
+export const Default: Story = {};
