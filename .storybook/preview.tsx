@@ -35,21 +35,7 @@ const preview: Preview = {
 
       return (
         <ThemeProvider theme={theme} dense={dense}>
-          <div
-            // style={{
-            //   boxSizing: "border-box",
-            //   background: "var(--background)",
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   alignItems: "center",
-            //   width: "100vw",
-            //   height: "100vh",
-            //   overflow: "hidden",
-            //   transition: "var(--animation-default)",
-            //   padding: "var(--space-3-x)",
-            // }}
-            className="sb-preview"
-          >
+          <div className="sb-preview">
             <Story />
           </div>
         </ThemeProvider>

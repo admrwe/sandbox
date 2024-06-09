@@ -9,7 +9,7 @@ export type FontSizes =
   | '3-x'
   | '5-x';
 
-export interface CommonCSSProps {
+export interface CSSMarginProps {
   marginInlineStart?: Spaces;
   marginInlineEnd?: Spaces;
   marginInline?: Spaces;
@@ -20,19 +20,17 @@ export interface CommonCSSProps {
 }
 
 /**
- * Accepts a ...remainingProps spread inside a component to check if css props
+ * Accepts an object of CSSMarginProps inside a component to check if those props
  * are used, and if so, to apply inline styles with appropriate tokens.
  */
-export const getCommonCssPropStyles = (spread: any) => ({
+export const getCssMarginPropsStyle = (obj: CSSMarginProps) => ({
   marginInlineStart:
-    spread.marginInlineStart && `var(--space-${spread.marginInlineStart})`,
-  marginInlineEnd:
-    spread.marginInlineEnd && `var(--space-${spread.marginInlineEnd})`,
-  marginInline: spread.marginInline && `var(--space-${spread.marginInline})`,
+    obj.marginInlineStart && `var(--space-${obj.marginInlineStart})`,
+  marginInlineEnd: obj.marginInlineEnd && `var(--space-${obj.marginInlineEnd})`,
+  marginInline: obj.marginInline && `var(--space-${obj.marginInline})`,
   marginBlockStart:
-    spread.marginBlockStart && `var(--space-${spread.marginBlockStart})`,
-  marginBlockEnd:
-    spread.marginBlockEnd && `var(--space-${spread.marginBlockEnd})`,
-  marginBlock: spread.marginBlock && `var(--space-${spread.marginBlock})`,
-  margin: spread.margin && `var(--space-${spread.margin})`,
+    obj.marginBlockStart && `var(--space-${obj.marginBlockStart})`,
+  marginBlockEnd: obj.marginBlockEnd && `var(--space-${obj.marginBlockEnd})`,
+  marginBlock: obj.marginBlock && `var(--space-${obj.marginBlock})`,
+  margin: obj.margin && `var(--space-${obj.margin})`,
 });

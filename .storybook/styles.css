@@ -1,5 +1,5 @@
 .sb-preview {
-  box-sizing: 'border-box';
+  box-sizing: border-box;
   background: var(--background);
   display: flex;
   justify-content: center;

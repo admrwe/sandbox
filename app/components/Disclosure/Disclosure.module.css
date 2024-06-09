@@ -16,6 +16,7 @@
 
   box-sizing: border-box;
   overflow: hidden;
+  width: 100%;
   border: 1px solid var(--disclosure-border-color);
   border-radius: var(--disclosure-border-radius);
   transition: var(--disclosure-animation);

@@ -15,7 +15,6 @@ const meta: Meta<typeof Disclosure> = {
       </>
     ),
     // expanded: false,
-    style: { minInlineSize: '300px' },
     onOpenChange: fn(),
     onToggle: fn(),
   },

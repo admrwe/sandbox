@@ -2,10 +2,10 @@ import { JSX, forwardRef, HTMLAttributes } from 'react';
 
 import style from './Heading.module.css';
 
-import { FontSizes, CommonCSSProps, getCommonCssPropStyles } from '../utils';
+import { FontSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
 interface HeadingProps
-  extends CommonCSSProps,
+  extends CSSMarginProps,
     HTMLAttributes<HTMLHeadingElement> {
   /**
    * Sets HTML heading level, i.e. h2.
@@ -38,6 +38,13 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       level = 2,
       size = '2-x',
       fontWeight = 'normal',
+      marginInlineStart,
+      marginInlineEnd,
+      marginInline,
+      marginBlockStart,
+      marginBlockEnd,
+      marginBlock,
+      margin,
       ...remainingProps
     } = props;
     const HeadingTag: keyof JSX.IntrinsicElements = `h${level}`;
@@ -46,8 +53,17 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <HeadingTag
         style={{
+          ...remainingProps.style,
           fontWeight: fontWeight,
-          ...getCommonCssPropStyles(remainingProps),
+          ...getCssMarginPropsStyle({
+            marginInlineStart,
+            marginInlineEnd,
+            marginInline,
+            marginBlockStart,
+            marginBlockEnd,
+            marginBlock,
+            margin,
+          }),
         }}
         className={`${style.heading} ${sizeClass}`}
         ref={ref}

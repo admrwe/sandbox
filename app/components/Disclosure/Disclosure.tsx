@@ -10,7 +10,11 @@ import {
 
 import style from './Disclosure.module.css';
 
-interface DisclosureProps extends HTMLAttributes<HTMLDivElement> {
+import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
+
+interface DisclosureProps
+  extends CSSMarginProps,
+    HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   title: string;
   expanded?: boolean;
@@ -27,6 +31,13 @@ export const Disclosure = (props: DisclosureProps) => {
     defaultExpanded = false,
     onToggle,
     onOpenChange,
+    marginInlineStart,
+    marginInlineEnd,
+    marginInline,
+    marginBlockStart,
+    marginBlockEnd,
+    marginBlock,
+    margin,
     ...remainingProps
   } = props;
 
@@ -106,7 +117,22 @@ export const Disclosure = (props: DisclosureProps) => {
   };
 
   return (
-    <div className={style['disclosure']} {...remainingProps}>
+    <div
+      className={style['disclosure']}
+      {...remainingProps}
+      style={{
+        ...remainingProps.style,
+        ...getCssMarginPropsStyle({
+          marginInlineStart,
+          marginInlineEnd,
+          marginInline,
+          marginBlockStart,
+          marginBlockEnd,
+          marginBlock,
+          margin,
+        }),
+      }}
+    >
       <button
         onClick={handleOnClick}
         aria-expanded={isOpen}
