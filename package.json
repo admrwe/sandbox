@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --output-dir dist/storybook",
     "prettier": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css}\""
   },
   "dependencies": {
