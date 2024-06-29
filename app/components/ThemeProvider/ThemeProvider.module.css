@@ -7,6 +7,7 @@ alters the holistic visual presentation of all components.
 .global {
   /* Animation */
   --animation-default: all 200ms ease-in-out;
+  --animation-fast: all 50ms ease-in-out;
 
   /* Border radius */
   --border-radius-base: 8px;
@@ -17,11 +18,13 @@ alters the holistic visual presentation of all components.
   /* Color */
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-green: #279127;
   --color-green-dark: #1a701a;
   --color-green-light: #279127;
+  --color-red-dark: #dd2d2d;
+  --color-red-light: #dd2d2d;
 
   /* Focus */
-  --focus-ring: 2px solid var(--color-green);
   --focus-offset-outside: 2px;
   --focus-offset-inside: -4px;
 
@@ -36,7 +39,7 @@ alters the holistic visual presentation of all components.
 
   /* Typography */
   --font-family: system-ui, sans-serif;
-  --font-size-base: 1rem;
+  --font-size-base: 16px;
   --font-size-three-quarter-x: calc(var(--font-size-base) * 0.75);
   --font-size-1-x: var(--font-size-base);
   --font-size-1-and-eighth-x: calc(var(--font-size-base) * 1.125);
@@ -44,6 +47,12 @@ alters the holistic visual presentation of all components.
   --font-size-2-x: calc(var(--font-size-base) * 2);
   --font-size-3-x: calc(var(--font-size-base) * 3);
   --font-size-5-x: calc(var(--font-size-base) * 5);
+  --font-weight-regular: normal;
+  --font-weight-bold: bold;
+
+  --element-height-small: calc(var(--font-size-base) * 2);
+  --element-height-medium: calc(var(--font-size-base) * 2.5);
+  --element-height-large: calc(var(--font-size-base) * 3);
 }
 
 /* 
@@ -56,23 +65,42 @@ background and text colors, or action colors/states.
   --color-brand: var(--color-green-dark);
   --color-mode-background: var(--color-white);
   --color-mode-foreground: var(--color-black);
+  --focus-ring: 2px solid var(--color-brand);
 
   /* Common colors */
   --background: var(--color-mode-background);
   --background-inverse: var(--color-mode-foreground);
   --foreground: var(--color-mode-foreground);
+  --foreground-dim: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 60%,
+    var(--color-mode-background)
+  );
   --foreground-inverse: var(--color-mode-background);
   --border: color-mix(
     in srgb,
     var(--color-mode-foreground) 30%,
     var(--color-mode-background)
   );
+  --border-strong: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 60%,
+    var(--color-mode-background)
+  );
 
   /* Action */
+  --foreground-action: var(--color-brand);
+  --foreground-action-inverse: var(--color-mode-background);
   --background-action: var(--color-brand);
   --background-action--hover: color-mix(
     in srgb,
     var(--color-mode-foreground) 30%,
+    var(--color-brand)
+  );
+  --border-action: var(--color-brand);
+  --border-action--hover: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 70%,
     var(--color-brand)
   );
 }
@@ -109,5 +137,5 @@ alternate visual presentations, like a dense mode.
 .dense {
   --border-radius-base: 4px;
   --space-base: 4px;
-  --font-size-base: 0.9rem;
+  --font-size-base: 14px;
 }

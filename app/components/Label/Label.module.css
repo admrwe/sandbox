@@ -1,0 +1,30 @@
+.label {
+  /* ----- Tokens ----- */
+  /* Sizes */
+  --label-small-font-size: var(--font-size-three-quarter-x);
+  --label-medium-font-size: var(--font-size-1-x);
+  --label-large-font-size: var(--font-size-1-and-eighth-x);
+  --label-color: var(--foreground);
+
+  box-sizing: border-box;
+  color: var(--label-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+
+  & span {
+    font-weight: var(--font-weight-regular);
+    margin-inline-start: var(--space-half-x);
+  }
+
+  &.label--small {
+    font-size: var(--label-small-font-size);
+  }
+
+  &.label--medium {
+    font-size: var(--label-medium-font-size);
+  }
+
+  &.label--large {
+    font-size: var(--label-large-font-size);
+  }
+}

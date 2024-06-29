@@ -1,24 +1,22 @@
-import { JSX, forwardRef, HTMLAttributes, ComponentProps } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 
-import style from './Heading.module.css';
+import style from './Text.module.css';
 
 import { FontSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
-interface HeadingProps extends CSSMarginProps, ComponentProps<'h1'> {
+interface TextProps extends CSSMarginProps, HTMLAttributes<HTMLDivElement> {
   /**
-   * Sets HTML heading level, i.e. h2.
-   *
-   * @default 2
-   */
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
-  /**
-   * Sets heading text.
+   * Sets text.
    */
   children: string;
   /**
+   * Sets display type.
+   */
+  display?: 'block' | 'inline';
+  /**
    * Sets font size.
    *
-   * @default '2-x'
+   * @default '1-x'
    */
   size?: FontSizes;
   /**
@@ -29,12 +27,12 @@ interface HeadingProps extends CSSMarginProps, ComponentProps<'h1'> {
   fontWeight?: 'bold' | 'normal';
 }
 
-export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (props: HeadingProps, ref) => {
+export const Text = forwardRef<HTMLDivElement, TextProps>(
+  (props: TextProps, ref) => {
     const {
       children,
-      level = 2,
-      size = '2-x',
+      display = 'block',
+      size = '1-x',
       fontWeight = 'normal',
       marginInlineStart,
       marginInlineEnd,
@@ -45,14 +43,14 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       margin,
       ...remainingProps
     } = props;
-    const HeadingTag: keyof JSX.IntrinsicElements = `h${level}`;
     const sizeClass = style[`size-${size}`];
 
     return (
-      <HeadingTag
+      <div
         style={{
           ...remainingProps.style,
           fontWeight: fontWeight,
+          display,
           ...getCssMarginPropsStyle({
             marginInlineStart,
             marginInlineEnd,
@@ -68,7 +66,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         {...remainingProps}
       >
         {children}
-      </HeadingTag>
+      </div>
     );
   }
 );
