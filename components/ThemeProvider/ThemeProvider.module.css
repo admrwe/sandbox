@@ -53,6 +53,10 @@ alters the holistic visual presentation of all components.
   --element-height-small: calc(var(--font-size-base) * 2);
   --element-height-medium: calc(var(--font-size-base) * 2.5);
   --element-height-large: calc(var(--font-size-base) * 3);
+
+  /* Shadow */
+  --box-shadow-default: 0px 10px 20px 0px
+    color-mix(in srgb, var(--color-black) 30%, transparent);
 }
 
 /* 

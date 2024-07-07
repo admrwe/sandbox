@@ -2,19 +2,47 @@
   --dialog-border: 1px solid var(--border);
   --dialog-border-radius: var(--border-radius-1-x);
   --dialog-padding: var(--space-2-x);
+  --dialog-background-color: var(--color-mode-background);
   --dialog-backdrop-background-color: color-mix(
     in srgb,
-    var(--color-mode-foreground) 50%,
+    var(--color-mode-foreground) 30%,
     transparent
   );
+  --dialog-box-shadow: var(--box-shadow-default);
 
   inline-size: 100%;
   max-inline-size: 500px;
   border: var(--dialog-border);
   border-radius: var(--dialog-border-radius);
   padding: var(--dialog-padding);
+  background-color: var(--dialog-background-color);
+  opacity: 0;
+  box-shadow: var(--dialog-box-shadow);
+  transition: all 200ms ease-out allow-discrete;
+
+  &[open] {
+    opacity: 1;
+  }
 
   &::backdrop {
+    background-color: transparent;
+    transition: all 200ms ease-out allow-discrete;
+  }
+
+  &[open]::backdrop {
     background-color: var(--dialog-backdrop-background-color);
+  }
+}
+
+@starting-style {
+  .dialog[open] {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@starting-style {
+  .dialog[open]::backdrop {
+    background-color: transparent;
   }
 }

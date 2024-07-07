@@ -153,7 +153,9 @@ const Body = (props: DialogBodyProps) => {
     >
       <Stack>
         <Stack direction="row" style={{ justifyContent: 'space-between' }}>
-          <Heading>{title}</Heading>
+          <Heading size="1-and-half-x" fontWeight="bold">
+            {title}
+          </Heading>
           <Button
             onClick={() => dialogRef.current?.close()}
             type="button"
