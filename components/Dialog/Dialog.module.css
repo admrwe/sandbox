@@ -10,7 +10,8 @@
   );
   --dialog-box-shadow: var(--box-shadow-default);
 
-  inline-size: 100%;
+  inline-size: 85vw;
+  max-block-size: 85vh;
   max-inline-size: 500px;
   border: var(--dialog-border);
   border-radius: var(--dialog-border-radius);
