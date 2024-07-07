@@ -1,0 +1,10 @@
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-mode-background);
+  color: var(--color-mode-foreground);
+  inline-size: 100vw;
+  block-size: 100vh;
+  overflow: hidden;
+}

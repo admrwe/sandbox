@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import { ThemeProvider } from '../app/components/ThemeProvider';
+import { ThemeProvider } from '../components/ThemeProvider';
 
 import './styles.css';
 

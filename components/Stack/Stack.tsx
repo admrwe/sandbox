@@ -4,6 +4,10 @@ import { Spaces } from '../utils';
 
 interface StackProps extends ComponentProps<'div'> {
   /**
+   * Sets alignment along chosen direction.
+   */
+  alignment?: 'start' | 'end' | 'center';
+  /**
    * Pass content to the stack.
    */
   children: ReactNode;
@@ -25,6 +29,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
   (props: StackProps, ref) => {
     const {
       children,
+      alignment = 'start',
       direction = 'column',
       space = '1-x',
       wrap,
@@ -38,6 +43,16 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     // const sizeClass = styles[`button--${size}`];
     // const classes = `${baseClass} ${variantClass} ${sizeClass}`;
     const classes = `${baseClass}`;
+    const getAlignment = (alignment: string) => {
+      switch (alignment) {
+        case 'start':
+          return 'flex-start';
+        case 'center':
+          return 'center';
+        case 'end':
+          return 'flex-end';
+      }
+    };
 
     return (
       <div
@@ -48,6 +63,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
           flexDirection: direction,
           gap: `var(--space-${space})`,
           flexWrap: wrap ? 'wrap' : 'nowrap',
+          justifyContent: getAlignment(alignment),
         }}
         {...remainingProps}
       >

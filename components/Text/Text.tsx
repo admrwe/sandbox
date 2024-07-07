@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 
 import style from './Text.module.css';
 
@@ -8,7 +8,7 @@ interface TextProps extends CSSMarginProps, HTMLAttributes<HTMLDivElement> {
   /**
    * Sets text.
    */
-  children: string;
+  children: ReactNode;
   /**
    * Sets display type.
    */
