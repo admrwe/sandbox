@@ -17,6 +17,7 @@ import styles from './Dialog.module.css';
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 /**
  * ---------------------------
@@ -160,10 +161,11 @@ const Body = (props: DialogBodyProps) => {
             onClick={() => dialogRef.current?.close()}
             type="button"
             size="small"
-            variant="secondary"
+            variant="tertiary"
+            iconOnly
             style={{ alignSelf: 'center' }}
           >
-            Close
+            <Icon>close</Icon>
           </Button>
         </Stack>
         {children}

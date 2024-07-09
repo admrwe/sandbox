@@ -23,7 +23,7 @@
 
   .disclosure__header {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     gap: var(--space-1-x);
     align-items: center;
     font-family: var(--font-family);

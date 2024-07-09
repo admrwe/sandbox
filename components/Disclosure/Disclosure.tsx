@@ -11,6 +11,8 @@ import {
 
 import style from './Disclosure.module.css';
 
+import { Icon } from '../Icon';
+
 import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
 interface DisclosureProps extends CSSMarginProps, ComponentProps<'div'> {
@@ -172,9 +174,11 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
             style={{
               transition: 'inherit',
               transform: isOpen ? 'rotate(180deg)' : undefined,
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            👇
+            <Icon aria-hidden>keyboard_arrow_down</Icon>
           </div>
         </button>
         <div

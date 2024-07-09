@@ -16,6 +16,10 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     <div
       className={`${style.global} ${style.semantic} ${style[theme]} ${dense ? style.dense : ''}`}
     >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+      />
       {children}
     </div>
   );
