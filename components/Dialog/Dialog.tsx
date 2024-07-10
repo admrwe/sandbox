@@ -159,6 +159,7 @@ const Body = (props: DialogBodyProps) => {
           </Heading>
           <Button
             onClick={() => dialogRef.current?.close()}
+            autoFocus
             type="button"
             size="small"
             variant="tertiary"
