@@ -1,10 +1,12 @@
 import { ComponentProps, forwardRef, ReactNode } from 'react';
+import { cva } from 'class-variance-authority';
 import styles from './Button.module.css';
+
 import { CommonSizes } from '../utils';
 
 interface ButtonProps extends ComponentProps<'button'> {
   /**
-   * Sets button text.
+   * Button text.
    */
   children: ReactNode;
 
@@ -26,18 +28,41 @@ interface ButtonProps extends ComponentProps<'button'> {
   iconOnly?: boolean;
 
   /**
-   * Sets button size.
+   * Button size.
    */
   size?: CommonSizes;
 
   /**
-   * Sets button variant.
+   * Button variant.
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
 }
 
+const buttonStyles = cva(styles.button, {
+  variants: {
+    iconOnly: {
+      true: styles.iconOnly,
+    },
+    size: {
+      small: styles.small,
+      medium: styles.medium,
+      large: styles.large,
+    },
+    variant: {
+      primary: styles.primary,
+      secondary: styles.secondary,
+      tertiary: styles.tertiary,
+    },
+  },
+  defaultVariants: {
+    iconOnly: false,
+    size: 'medium',
+    variant: 'primary',
+  },
+});
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props: ButtonProps, ref) => {
+  (props: ButtonProps, forwardedRef) => {
     const {
       children,
       iconAfter,
@@ -45,17 +70,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly = false,
       size = 'medium',
       variant = 'primary',
+      className,
       ...remainingProps
     } = props;
 
-    const baseClass = styles.button;
-    const variantClass = styles[`button--${variant}`];
-    const sizeClass = styles[`button--${size}`];
-    const iconOnlyClass = iconOnly ? styles[`button--icon-only`] : null;
-    const classes = `${baseClass} ${variantClass} ${sizeClass} ${iconOnlyClass}`;
-
     return (
-      <button ref={ref} className={classes} {...remainingProps}>
+      <button
+        ref={forwardedRef}
+        className={buttonStyles({ iconOnly, size, variant, className })}
+        {...remainingProps}
+      >
         {iconBefore && iconBefore}
         {children}
         {iconAfter && iconAfter}

@@ -44,7 +44,6 @@
   font-weight: var(--button-font-weight);
   border: 2px solid;
   border-radius: var(--button-border-radius);
-  /* padding-block: var(--button-padding-block); */
   padding-inline: var(--button-padding-inline);
   transition: var(--button-animation);
   cursor: pointer;
@@ -62,7 +61,7 @@
     outline-offset: var(--focus-offset-outside);
   }
 
-  &.button--primary {
+  &.primary {
     background-color: var(--button-primary-background-color);
     color: var(--button-primary-color);
     border-color: var(--button-primary-border-color);
@@ -72,7 +71,7 @@
     }
   }
 
-  &.button--secondary {
+  &.secondary {
     background-color: transparent;
     border: 2px solid;
     border-color: var(--button-secondary-border-color);
@@ -83,7 +82,7 @@
     }
   }
 
-  &.button--tertiary {
+  &.tertiary {
     background-color: transparent;
     border: 2px solid;
     border-color: var(--button-tertiary-border-color);
@@ -94,35 +93,35 @@
     }
   }
 
-  &.button--small {
+  &.small {
     font-size: var(--button-small-font-size);
     min-block-size: var(--element-height-small);
   }
 
-  &.button--medium {
+  &.medium {
     font-size: var(--button-medium-font-size);
     min-block-size: var(--element-height-medium);
   }
 
-  &.button--large {
+  &.large {
     font-size: var(--button-large-font-size);
     min-block-size: var(--element-height-large);
   }
 
-  &.button--icon-only {
+  &.iconOnly {
     padding: 0;
 
-    &.button--small {
+    &.small {
       block-size: var(--element-height-small);
       inline-size: var(--element-height-small);
     }
 
-    &.button--medium {
+    &.medium {
       block-size: var(--element-height-medium);
       inline-size: var(--element-height-medium);
     }
 
-    &.button--large {
+    &.large {
       block-size: var(--element-height-large);
       inline-size: var(--element-height-large);
     }
