@@ -21,7 +21,7 @@
   border-radius: var(--disclosure-border-radius);
   transition: var(--disclosure-animation);
 
-  .disclosure__header {
+  .header {
     display: flex;
     justify-content: space-between;
     gap: var(--space-1-x);
@@ -59,7 +59,7 @@
     }
   }
 
-  .disclosure__body {
+  .body {
     transition: inherit;
     overflow: hidden;
     font-family: var(--font-family);
@@ -67,11 +67,11 @@
     font-size: var(--disclosure-body-font-size);
   }
 
-  .disclosure__body-content {
+  .bodyContent {
     padding: var(--disclosure-padding);
   }
 
-  &.disclosure--no-container {
+  &.noContainer {
     border: none;
 
     .disclosure__header {
@@ -83,7 +83,7 @@
       }
     }
 
-    .disclosure__body-content {
+    .bodyContent {
       padding-block: var(--space-1-x);
       padding-inline: 0;
     }

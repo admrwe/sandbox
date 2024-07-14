@@ -14,6 +14,7 @@ import {
 } from './context';
 import styles from './Dialog.module.css';
 
+// Internal components
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Button } from '../Button';
@@ -132,12 +133,6 @@ interface DialogBodyProps extends ComponentProps<'dialog'> {
 const Body = (props: DialogBodyProps) => {
   const { children, title, ...remainingProps } = props;
 
-  const baseClass = styles.dialog;
-  // const variantClass = styles[`button--${variant}`];
-  // const sizeClass = styles[`button--${size}`];
-  // const classes = `${baseClass} ${variantClass} ${sizeClass}`;
-  const classes = `${baseClass}`;
-
   const { dialogRef, setOpen } = useDialogContext();
 
   const handleOnClose = (event: SyntheticEvent<HTMLDialogElement>) => {
@@ -148,7 +143,7 @@ const Body = (props: DialogBodyProps) => {
   return (
     <dialog
       ref={dialogRef}
-      className={classes}
+      className={styles.dialog}
       onClose={handleOnClose}
       {...remainingProps}
     >

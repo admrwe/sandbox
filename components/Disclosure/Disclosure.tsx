@@ -8,46 +8,63 @@ import {
   forwardRef,
   ComponentProps,
 } from 'react';
-
-import style from './Disclosure.module.css';
-
-import { Icon } from '../Icon';
-
+import { cva } from 'class-variance-authority';
+import styles from './Disclosure.module.css';
 import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
+
+// Internal components
+import { Icon } from '../Icon';
 
 interface DisclosureProps extends CSSMarginProps, ComponentProps<'div'> {
   /**
    * Content for the disclosure.
    */
   children: ReactNode;
+
   /**
    * Title for disclosure.
    */
   title: string;
+
   /**
    * Sets expanded state (controlled).
    */
   expanded?: boolean;
+
   /**
    * Sets expanded state (uncontrolled).
    */
   defaultExpanded?: boolean;
+
   /**
    * Removes disclosure container.
    */
   noContainer?: boolean;
+
   /**
    * Handler fired when toggled state changes.
    */
   onToggle?: () => void;
+
   /**
    * Handler fired when expanded state changes, returns current expanded state.
    */
   onExpandedChange?: (isExpanded: boolean) => void;
 }
 
+const disclosureStyles = cva(styles.disclosure, {
+  variants: {
+    noContainer: {
+      true: styles.noContainer,
+    },
+  },
+  defaultVariants: {
+    noContainer: false,
+  },
+});
+
 export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
-  (props: DisclosureProps, ref) => {
+  (props: DisclosureProps, forwardedRef) => {
     const {
       children,
       title,
@@ -109,8 +126,7 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
         setIsOpen(newIsOpen);
 
         if (newIsOpen === false) {
-          // Close
-
+          // -- Close --
           // Reset height from "auto" to explicit current height
           setBodyHeight(disclosureBodyContentRef.current?.offsetHeight);
 
@@ -119,8 +135,7 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
             setBodyHeight(0);
           }, 10);
         } else if (newIsOpen === true) {
-          // Open
-
+          // -- Open --
           // Set to current height for animation
           setBodyHeight(disclosureBodyContentRef.current?.offsetHeight);
 
@@ -147,10 +162,10 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
 
     return (
       <div
-        ref={ref}
-        className={`${style['disclosure']} ${noContainer && style['disclosure--no-container']}`}
-        {...remainingProps}
+        ref={forwardedRef}
+        className={disclosureStyles({ noContainer })}
         style={{
+          ...remainingProps.style,
           ...getCssMarginPropsStyle({
             marginInlineStart,
             marginInlineEnd,
@@ -160,14 +175,14 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
             marginBlock,
             margin,
           }),
-          ...remainingProps.style,
         }}
+        {...remainingProps}
       >
         <button
           onClick={handleOnClick}
           aria-expanded={isOpen}
           aria-controls={disclosureBodyId}
-          className={style['disclosure__header']}
+          className={styles.header}
         >
           <div>{title}</div>
           <div
@@ -182,17 +197,14 @@ export const Disclosure = forwardRef<HTMLDivElement, DisclosureProps>(
           </div>
         </button>
         <div
-          className={style['disclosure__body']}
+          className={styles.body}
           id={disclosureBodyId}
           style={{
             blockSize: bodyHeight,
             visibility: isOpen ? 'visible' : 'hidden',
           }}
         >
-          <div
-            ref={disclosureBodyContentRef}
-            className={style['disclosure__body-content']}
-          >
+          <div ref={disclosureBodyContentRef} className={styles.bodyContent}>
             {children}
           </div>
         </div>

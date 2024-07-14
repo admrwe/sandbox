@@ -44,28 +44,28 @@
     }
   }
 
-  &.input--invalid {
+  &.invalid {
     input {
       outline: 2px solid;
       outline-color: var(--input-border-color--invalid);
     }
   }
 
-  &.input--small {
+  &.small {
     input {
       font-size: var(--input-small-font-size);
       min-block-size: var(--element-height-small);
     }
   }
 
-  &.input--medium {
+  &.medium {
     input {
       font-size: var(--input-medium-font-size);
       min-block-size: var(--element-height-medium);
     }
   }
 
-  &.input--large {
+  &.large {
     input {
       font-size: var(--input-large-font-size);
       min-block-size: var(--element-height-large);

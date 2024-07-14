@@ -1,7 +1,5 @@
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
-
-import style from './Text.module.css';
-
+import styles from './Text.module.css';
 import { FontSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
 interface TextProps extends CSSMarginProps, HTMLAttributes<HTMLDivElement> {
@@ -28,7 +26,7 @@ interface TextProps extends CSSMarginProps, HTMLAttributes<HTMLDivElement> {
 }
 
 export const Text = forwardRef<HTMLDivElement, TextProps>(
-  (props: TextProps, ref) => {
+  (props: TextProps, forwardedRef) => {
     const {
       children,
       display = 'block',
@@ -43,14 +41,16 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
       margin,
       ...remainingProps
     } = props;
-    const sizeClass = style[`size-${size}`];
 
     return (
       <div
+        ref={forwardedRef}
+        className={styles.heading}
         style={{
           ...remainingProps.style,
-          fontWeight: fontWeight,
           display,
+          fontWeight: fontWeight,
+          fontSize: `var(--font-size-${size})`,
           ...getCssMarginPropsStyle({
             marginInlineStart,
             marginInlineEnd,
@@ -61,8 +61,6 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
             margin,
           }),
         }}
-        className={`${style.heading} ${sizeClass}`}
-        ref={ref}
         {...remainingProps}
       >
         {children}

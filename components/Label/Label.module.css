@@ -16,15 +16,15 @@
     margin-inline-start: var(--space-half-x);
   }
 
-  &.label--small {
+  &.small {
     font-size: var(--label-small-font-size);
   }
 
-  &.label--medium {
+  &.medium {
     font-size: var(--label-medium-font-size);
   }
 
-  &.label--large {
+  &.large {
     font-size: var(--label-large-font-size);
   }
 }

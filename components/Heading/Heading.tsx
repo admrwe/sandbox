@@ -1,7 +1,5 @@
 import { JSX, forwardRef, HTMLAttributes, ComponentProps } from 'react';
-
-import style from './Heading.module.css';
-
+import styles from './Heading.module.css';
 import { FontSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
 interface HeadingProps extends CSSMarginProps, ComponentProps<'h1'> {
@@ -30,12 +28,13 @@ interface HeadingProps extends CSSMarginProps, ComponentProps<'h1'> {
 }
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (props: HeadingProps, ref) => {
+  (props: HeadingProps, forwardedRef) => {
     const {
       children,
+      fontWeight = 'normal',
       level = 2,
       size = '2-x',
-      fontWeight = 'normal',
+      className,
       marginInlineStart,
       marginInlineEnd,
       marginInline,
@@ -46,13 +45,15 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       ...remainingProps
     } = props;
     const HeadingTag: keyof JSX.IntrinsicElements = `h${level}`;
-    const sizeClass = style[`size-${size}`];
 
     return (
       <HeadingTag
+        ref={forwardedRef}
+        className={styles.heading}
         style={{
           ...remainingProps.style,
           fontWeight: fontWeight,
+          fontSize: `var(--font-size-${size})`,
           ...getCssMarginPropsStyle({
             marginInlineStart,
             marginInlineEnd,
@@ -63,8 +64,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
             margin,
           }),
         }}
-        className={`${style.heading} ${sizeClass}`}
-        ref={ref}
         {...remainingProps}
       >
         {children}

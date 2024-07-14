@@ -10,7 +10,6 @@ const meta: Meta<typeof Text> = {
     display: 'block',
     size: '1-x',
     fontWeight: 'normal',
-    marginBlockStart: '2-x',
   },
 };
 

@@ -9,14 +9,13 @@ interface IconProps extends ComponentProps<'span'> {
 }
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
-  (props: IconProps, ref) => {
+  (props: IconProps, forwardedRef) => {
     const { children, ...remainingProps } = props;
 
-    const baseClass = styles.icon;
-    const classes = `material-symbols-outlined ${baseClass}`;
+    const classes = `material-symbols-outlined ${styles.icon}`;
 
     return (
-      <span ref={ref} className={classes} {...remainingProps}>
+      <span ref={forwardedRef} className={classes} {...remainingProps}>
         {children}
       </span>
     );

@@ -1,6 +1,9 @@
 import { useId, ComponentProps, forwardRef } from 'react';
+import { cva } from 'class-variance-authority';
 import styles from './Input.module.css';
-import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
+import { CommonSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
+
+// Internal components
 import { Label } from '../Label';
 
 interface InputProps extends CSSMarginProps, ComponentProps<'div'> {
@@ -8,36 +11,58 @@ interface InputProps extends CSSMarginProps, ComponentProps<'div'> {
    * Props to pass to the internal input element.
    */
   inputProps?: ComponentProps<'input'>;
+
   /**
    * Sets the input to invalid.
    *
    * @default false
    */
   invalid?: boolean;
+
   /**
    * Label for the input.
    */
   label: string;
+
   /**
    * Placeholder for the input.
    */
   placeholder?: string;
+
   /**
    * Sets the input to required.
    *
    * @default false
    */
   required?: boolean;
+
   /**
    * Sets the input size.
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: CommonSizes;
 }
 
+const inputStyles = cva(styles.input, {
+  variants: {
+    invalid: {
+      true: styles.invalid,
+    },
+    size: {
+      small: styles.small,
+      medium: styles.medium,
+      large: styles.large,
+    },
+  },
+  defaultVariants: {
+    invalid: false,
+    size: 'medium',
+  },
+});
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (props: InputProps, ref) => {
+  (props: InputProps, forwardedRef) => {
     const {
       inputProps,
       invalid = false,
@@ -45,6 +70,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       required = false,
       size = 'medium',
+      className,
       marginInlineStart,
       marginInlineEnd,
       marginInline,
@@ -56,14 +82,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     } = props;
     const inputId = useId();
 
-    const baseClass = styles.input;
-    const sizeClass = styles[`input--${size}`];
-    const invalidClass = styles[`input--invalid`];
-    const classes = `${baseClass} ${sizeClass} ${invalid ? invalidClass : null}`;
-
     return (
       <div
-        className={classes}
+        className={inputStyles({ invalid, size, className })}
         style={{
           ...remainingProps.style,
           ...getCssMarginPropsStyle({
@@ -82,9 +103,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </Label>
         <input
-          ref={ref}
-          id={inputId}
+          ref={forwardedRef}
           {...inputProps}
+          id={inputId}
           aria-invalid={invalid}
           aria-required={required}
           placeholder={placeholder}

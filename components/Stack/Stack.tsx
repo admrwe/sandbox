@@ -26,23 +26,16 @@ interface StackProps extends ComponentProps<'div'> {
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
-  (props: StackProps, ref) => {
+  (props: StackProps, forwardedRef) => {
     const {
-      children,
       alignment = 'start',
+      children,
       direction = 'column',
       space = '1-x',
       wrap,
-      //   size = 'medium',
-      //   variant = 'primary',
       ...remainingProps
     } = props;
 
-    const baseClass = styles.stack;
-    // const variantClass = styles[`button--${variant}`];
-    // const sizeClass = styles[`button--${size}`];
-    // const classes = `${baseClass} ${variantClass} ${sizeClass}`;
-    const classes = `${baseClass}`;
     const getAlignment = (alignment: string) => {
       switch (alignment) {
         case 'start':
@@ -56,8 +49,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
 
     return (
       <div
-        ref={ref}
-        className={classes}
+        ref={forwardedRef}
+        className={styles.stack}
         style={{
           ...remainingProps.style,
           flexDirection: direction,

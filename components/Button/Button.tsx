@@ -1,10 +1,9 @@
 import { ComponentProps, forwardRef, ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 import styles from './Button.module.css';
+import { CommonSizes, CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
-import { CommonSizes } from '../utils';
-
-interface ButtonProps extends ComponentProps<'button'> {
+interface ButtonProps extends CSSMarginProps, ComponentProps<'button'> {
   /**
    * Button text.
    */
@@ -71,6 +70,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'medium',
       variant = 'primary',
       className,
+      marginInlineStart,
+      marginInlineEnd,
+      marginInline,
+      marginBlockStart,
+      marginBlockEnd,
+      marginBlock,
+      margin,
       ...remainingProps
     } = props;
 
@@ -78,6 +84,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={forwardedRef}
         className={buttonStyles({ iconOnly, size, variant, className })}
+        style={{
+          ...remainingProps.style,
+          ...getCssMarginPropsStyle({
+            marginInlineStart,
+            marginInlineEnd,
+            marginInline,
+            marginBlockStart,
+            marginBlockEnd,
+            marginBlock,
+            margin,
+          }),
+        }}
         {...remainingProps}
       >
         {iconBefore && iconBefore}
