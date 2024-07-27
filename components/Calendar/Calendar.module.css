@@ -29,6 +29,10 @@
     transparent
   );
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
   inline-size: var(--calendar-day-size);
   block-size: var(--calendar-day-size);
   background: transparent;
