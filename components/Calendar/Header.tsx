@@ -23,7 +23,6 @@ const headerStyles = cva(styles.header);
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(
   (props: HeaderProps, forwardedRef) => {
     const {
-      children,
       onPrevMonthClick,
       onNextMonthClick,
       onPrevYearClick,

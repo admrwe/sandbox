@@ -118,6 +118,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           break;
         case 'Enter':
           setActiveDay(activeDesc);
+          onDayClick(setDate(activeDesc, activeDescDay));
           break;
       }
     };
@@ -189,6 +190,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 onClick={(e) => {
                   e.preventDefault();
                   daysRef.current?.focus();
+                  onDayClick(date);
                   setActiveDescDay(dayNumber);
                   setActiveDay(id);
                 }}
