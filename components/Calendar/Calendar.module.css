@@ -1,0 +1,64 @@
+.calendar {
+  --calendar-day-size: 40px;
+  width: fit-content;
+
+  /* width: calc(var(--calendar-day-size) * 7); */
+}
+
+.days {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-half-x);
+  outline: none;
+}
+
+.header {
+  align-items: center;
+}
+
+.day {
+  --day-background-color--hover: color-mix(
+    in srgb,
+    var(--background-action) 15%,
+    transparent
+  );
+  --day-current-background-color: color-mix(
+    in srgb,
+    var(--color-mode-foreground) 15%,
+    transparent
+  );
+
+  inline-size: var(--calendar-day-size);
+  block-size: var(--calendar-day-size);
+  background: transparent;
+  border-radius: var(--border-radius-1-x);
+  font-size: var(--font-size-1-x);
+  border: none;
+  /* transition: all 200ms ease-in-out; */
+
+  &.today {
+    background-color: var(--day-current-background-color);
+  }
+
+  &:hover {
+    background-color: var(--day-background-color--hover);
+  }
+
+  /* Active */
+  &[aria-pressed='true'] {
+    background-color: var(--background-action);
+    color: var(--foreground-inverse);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.focused {
+  outline: 2px solid green;
+  outline-offset: 2px;
+  z-index: 2;
+}

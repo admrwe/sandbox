@@ -46,6 +46,7 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
       <div
         ref={forwardedRef}
         className={styles.heading}
+        {...remainingProps}
         style={{
           ...remainingProps.style,
           display,
@@ -61,7 +62,6 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
             margin,
           }),
         }}
-        {...remainingProps}
       >
         {children}
       </div>

@@ -1,8 +1,9 @@
 import { ReactNode, ComponentProps, forwardRef } from 'react';
 import styles from './Stack.module.css';
 import { Spaces } from '../utils';
+import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
 
-interface StackProps extends ComponentProps<'div'> {
+interface StackProps extends CSSMarginProps, ComponentProps<'div'> {
   /**
    * Sets alignment along chosen direction.
    */
@@ -33,6 +34,14 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
       direction = 'column',
       space = '1-x',
       wrap,
+      marginInlineStart,
+      marginInlineEnd,
+      marginInline,
+      marginBlockStart,
+      marginBlockEnd,
+      marginBlock,
+      margin,
+      className,
       ...remainingProps
     } = props;
 
@@ -51,14 +60,23 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
       <div
         ref={forwardedRef}
         className={styles.stack}
+        {...remainingProps}
         style={{
           ...remainingProps.style,
+          ...getCssMarginPropsStyle({
+            marginInlineStart,
+            marginInlineEnd,
+            marginInline,
+            marginBlockStart,
+            marginBlockEnd,
+            marginBlock,
+            margin,
+          }),
           flexDirection: direction,
           gap: `var(--space-${space})`,
           flexWrap: wrap ? 'wrap' : 'nowrap',
           justifyContent: getAlignment(alignment),
         }}
-        {...remainingProps}
       >
         {children}
       </div>
