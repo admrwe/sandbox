@@ -1,0 +1,56 @@
+import { ComponentProps, forwardRef } from 'react';
+import { cva } from 'class-variance-authority';
+import styles from './{{pascalCase name}}.module.css';
+import { CSSMarginProps, getCssMarginPropsStyle } from '../utils';
+
+interface {{pascalCase name}}Props extends CSSMarginProps, ComponentProps<'div'> {
+  /**
+   * Prop description.
+   *
+   * @default default
+   */
+  prop?: any;
+}
+
+const {{camelCase name}}Styles = cva(styles.{{kebabCase name}}, {
+  variants: {},
+  defaultVariants: {},
+});
+
+export const {{pascalCase name}} = forwardRef<HTMLDivElement, {{pascalCase name}}Props>(
+  (props: {{pascalCase name}}Props, forwardedRef) => {
+    const {
+      className,
+      marginInlineStart,
+      marginInlineEnd,
+      marginInline,
+      marginBlockStart,
+      marginBlockEnd,
+      marginBlock,
+      margin,
+      ...remainingProps
+    } = props;
+
+    return (
+      <div 
+        ref={forwardedRef} 
+        className={ {{camelCase name}}Styles({ className }) }
+        style=\{{
+          ...remainingProps.style,
+          ...getCssMarginPropsStyle({
+            marginInlineStart,
+            marginInlineEnd,
+            marginInline,
+            marginBlockStart,
+            marginBlockEnd,
+            marginBlock,
+            margin,
+          }),
+        }}
+        {...remainingProps}
+      >
+        Update me :)
+      </div>
+    );
+  }
+);

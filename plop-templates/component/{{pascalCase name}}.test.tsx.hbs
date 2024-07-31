@@ -1,0 +1,13 @@
+import { render, screen } from '@testing-library/react';
+import { {{pascalCase name}} } from './';
+
+test('renders component', async () => {
+  render(
+    <{{pascalCase name}} data-testid="{{kebabCase name}}">
+      Foo bar baz.
+    </{{pascalCase name}}>
+  );
+  const component = screen.getByTestId('{{kebabCase name}}');
+
+  expect(component).toBeInTheDocument();
+});
