@@ -9,6 +9,8 @@ interface TextProps extends CSSMarginProps, HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   /**
    * Sets display type.
+   *
+   * @default 'block'
    */
   display?: 'block' | 'inline';
   /**
@@ -45,7 +47,7 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
     return (
       <div
         ref={forwardedRef}
-        className={styles.heading}
+        className={styles.text}
         {...remainingProps}
         style={{
           ...remainingProps.style,

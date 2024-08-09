@@ -1,0 +1,48 @@
+.textarea {
+  --textarea-small-font-size: var(--font-size-three-quarter-x);
+  --textarea-medium-font-size: var(--font-size-1-x);
+  --textarea-large-font-size: var(--font-size-1-and-eighth-x);
+  --textarea-border-color: var(--border);
+  --textarea-border-color--hover: var(--border-strong);
+  --textarea-border-color--invalid: var(--color-red-light);
+
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  background-color: var(--color-mode-background);
+  border: 1px solid;
+  border-color: var(--input-border-color);
+  border-radius: var(--border-radius-half-x);
+  color: var(--foreground);
+  inline-size: 100%;
+  padding-block: var(--space-1-x);
+  padding-inline: var(--space-1-x);
+  /* transition: var(--animation-default); */
+  resize: vertical;
+  block-size: auto;
+  outline-color: transparent;
+  outline-offset: -2px;
+
+  &::placeholder {
+    color: var(--foreground-dim);
+  }
+
+  &.invalid {
+    outline: 2px solid;
+    outline-color: var(--textarea-border-color--invalid);
+  }
+
+  &.small {
+    font-size: var(--textarea-small-font-size);
+    min-block-size: var(--element-height-small);
+  }
+
+  &.medium {
+    font-size: var(--textarea-medium-font-size);
+    min-block-size: var(--element-height-medium);
+  }
+
+  &.large {
+    font-size: var(--textarea-large-font-size);
+    min-block-size: var(--element-height-large);
+  }
+}
