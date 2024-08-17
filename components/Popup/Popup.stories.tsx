@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Popup } from './';
+import { Button } from '../Button';
 
 const PLACEMENTS = [
   'top',
@@ -42,7 +43,7 @@ export const Default: Story = {
 
     return (
       <>
-        <button ref={setAnchor}>I'm the anchor!</button>
+        <Button ref={setAnchor}>I'm the anchor!</Button>
         <Popup {...args} anchor={anchor}>
           Hello world :)
         </Popup>

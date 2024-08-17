@@ -12,21 +12,41 @@ import {
   Placement,
   autoUpdate,
   offset,
-  arrow as fuiArrow,
+  arrow as fuiArrow, // Rename to not conflict with internal prop
 } from '@floating-ui/react-dom';
 import styles from './Popup.module.css';
 
 interface PopupProps extends ComponentProps<'div'> {
   /**
-   * Prop description.
-   *
-   * @default default
+   * The anchor element, accepts a state getter.
    */
   anchor: Element | null;
-  placement?: Placement;
-  open?: boolean;
+
+  /**
+   * Shows an arrow pointing to the anchor.
+   *
+   * @default false
+   */
   arrow?: boolean;
+
+  /**
+   * The content for the popup.
+   */
   children?: ReactNode;
+
+  /**
+   * The open state of the popup.
+   *
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * The placement for the popup.
+   *
+   * @default 'bottom'
+   */
+  placement?: Placement;
 }
 
 const popupStyles = cva(styles.popup, {
@@ -34,6 +54,8 @@ const popupStyles = cva(styles.popup, {
   defaultVariants: {},
 });
 
+// Merge refs utility, based on https://mayursinhsarvaiya.medium.com/how-to-merge-refs-in-react-component-d5e4623b6924
+// TODO: Abstract somewhere reusalbe
 export default function mergeRefs<T = any>(
   ...refs: React.ForwardedRef<T>[]
 ): React.RefCallback<T> {
@@ -70,12 +92,13 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     // Set up Floating UI
     const { refs, floatingStyles, elements, update, middlewareData } =
       useFloating({
+        transform: false,
         placement,
         elements: {
           reference: anchor,
         },
         middleware: [
-          offset(arrow ? 12 : 6),
+          offset(arrow ? 12 : 6), // Increase space from anchor when arrow is displayed
           fuiArrow({ element: arrowRef, padding: 8 }),
         ],
       });
@@ -92,7 +115,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
       }
     }, [isOpen, elements, update]);
 
-    // Arrow styling
+    // Arrow styling based on placement
     const side = placement.split('-')[0];
     const staticSide = {
       top: 'bottom',
@@ -114,6 +137,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
         className={popupStyles({ className })}
         style={{
           opacity: isOpen ? 1 : 0,
+          transform: isOpen ? 'scale(1)' : 'scale(.95)',
           ...floatingStyles,
         }}
         {...remainingProps}
