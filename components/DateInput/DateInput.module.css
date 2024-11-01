@@ -1,0 +1,4 @@
+.date-input {
+  display: flex;
+  gap: var(--space-half-x);
+}
