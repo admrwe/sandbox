@@ -1,6 +1,7 @@
 .text {
   color: var(--color-mode-foreground);
   font-family: var(--font-family);
+  line-height: 1.5;
   margin: 0;
 
   &.size-three-quarter-x {
@@ -11,7 +12,7 @@
     font-size: var(--font-size-1-x);
   }
 
-  &.size-1-and-eigth-x {
+  &.size-1-and-eighth-x {
     font-size: var(--font-size-1-and-eighth-x);
   }
 

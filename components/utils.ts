@@ -5,7 +5,7 @@ export type Spaces = 'half-x' | '1-x' | '1-and-half-x' | '2-x' | '3-x' | '5-x';
 export type FontSizes =
   | 'three-quarter-x'
   | '1-x'
-  | '1-and-eigth-x'
+  | '1-and-eighth-x'
   | '1-and-half-x'
   | '2-x'
   | '3-x'
